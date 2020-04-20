@@ -1,0 +1,28 @@
+<h1>Auctions</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Starting Bid</th>
+                <th>Winning Bid</th>
+                <th>Buy Now Price</th>
+                <th>Expiration Date</th>
+                <th>Status</th>
+            </tr>
+        </thead
+        <tbody>
+            <% auctions.each do |auction| %>
+                <tr>
+                    <td><%= auction.title %></td>
+                    <td><%= auction.description %></td>
+                    <td><%= auction.starting_bid %></td>
+                    <td><%= auction.winning_bid %></td>
+                    <td><%= auction.buy_now_price %></td>
+                    <td><%= auction.expire_date %></td>
+                    <td><%= auction.status %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table> 

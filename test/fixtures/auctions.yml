@@ -1,0 +1,33 @@
+# == Schema Information
+#
+# Table name: auctions
+#
+#  id            :bigint           not null, primary key
+#  buy_now_price :float
+#  description   :text
+#  expire_date   :date
+#  starting_bid  :float
+#  status        :boolean
+#  title         :string
+#  winning_bid   :float
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
+one:
+  title: MyString
+  description: MyText
+  starting_bid: 1.5
+  buy_now_price: 1.5
+  status: false
+  winning_bid: 1.5
+  expire_date: 2020-04-20
+
+two:
+  title: MyString
+  description: MyText
+  starting_bid: 1.5
+  buy_now_price: 1.5
+  status: false
+  winning_bid: 1.5
+  expire_date: 2020-04-20
