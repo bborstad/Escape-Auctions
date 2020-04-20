@@ -1,14 +1,8 @@
 class AuctionsController < ApplicationController
     def index
-        auctions = Auction.all
+        auctions = Auction.includes(:user).all
         respond_to do |format|
             format.html { render :index, locals: {auctions: auctions } }
         end
-    end
-
-    def edit
-    end
-
-    def delete
     end
 end

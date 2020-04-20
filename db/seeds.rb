@@ -6,7 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# User seed data
+user1 = User.create!(
+    username: 'johnsmith'
+    password: 'password'
+)
+
+user2 = User.create!(
+    username: 'janesmith'
+    password: 'password'
+)
+
+# Auction seed data
 auction1 = Auction.create!(
+    user: user1,
     title: 'Ford Model T',
     description: 'Antique Ford Modle T',
     starting_bid: '200.00',
@@ -17,6 +30,7 @@ auction1 = Auction.create!(
 )
 
 auction2 = Auction.create!(
+    user: user2,
     title: 'Ford Model F',
     description: 'Ford Modle F, low mileage',
     starting_bid: '200.00',
@@ -27,6 +41,7 @@ auction2 = Auction.create!(
 )
 
 auction3 = Auction.create!(
+    user: user2,
     title: 'Chevy Spark',
     description: 'Slight hail damage',
     starting_bid: '200.00',
@@ -35,3 +50,5 @@ auction3 = Auction.create!(
     expire_date: '20200917',
     status: 'true' 
 )
+
+

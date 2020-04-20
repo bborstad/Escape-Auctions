@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   #Routes for auction controller
   get 'auctions', to: 'auctions#index', as: 'auctions' #index
 
-  #Routes for user controlloer
+  #Routes for user controller
+
+  #Routes for user_auction controller
+  get 'user/auctions', to: 'user_auctions#index', as: 'user_auctions'
+  get 'user/auctions/new', to: 'user_quizzes#new', as: 'new_auction'
+  post 'user/auctions', to: 'user_auctions#create'
 
   root to: redirect('/home', status: 302)
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
