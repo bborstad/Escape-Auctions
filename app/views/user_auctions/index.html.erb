@@ -5,9 +5,9 @@
     <br>
     <p>
       <%= auction.title %>
-      <%= link_to '🔎', auction_path(auction) %>
-      <%= link_to '🖋', auction_path(auction) %>
-      <%= link_to '🗑', auction_path(auction), method: :delete %>
+      <%= link_to 'Show', auction_path(auction) %>
+      <%= link_to 'Edit', edit_auction_path(auction) %>
+      <%= link_to 'Delete', auction_path(auction), method: :delete %>
     </p>
 
     <p>

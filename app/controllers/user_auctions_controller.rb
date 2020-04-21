@@ -6,13 +6,6 @@ class UserAuctionsController < ApplicationController
         end
     end
 
-    def show
-        auction = Auction.find(params[:id])
-        respond_to do |format|
-            format.html { render :show, locals: { auction: auction } }
-        end
-    end
-
     def new
         auction = Auction.new
         respond_to do |format|
@@ -34,5 +27,35 @@ class UserAuctionsController < ApplicationController
           end
         end
       end
+
+
+    def show
+        auction = Auction.find(params[:id])
+        respond_to do |format|
+            format.html { render :show, locals: { auction: auction } }
+        end
+    end
+
+    def edit
+        auction = Auction.find(params[:id])
+        respond_to do |format|
+          format.html { render :edit, locals: { auction: auction } }
+        end
+      end
       
+    def update
+        auction = Auction.find(params[:id])
+            respond_to do |format|
+                format.html do
+                if auction.update(params.require(:auction).permit(:title, :description, :starting_bid, :buy_now_price))
+                    #flash[:success] = 'Auction updated successfully'
+                    redirect_to user_auctions_url
+                else
+                    #flash.now[:error] = 'Error: Auction could not be updated'
+                    render :edit, locals: { auction: auction }
+                end
+            end
+        end
+    end
+
 end
