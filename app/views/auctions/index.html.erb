@@ -1,0 +1,34 @@
+<h1>Auctions</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Starting Bid</th>
+                <th>Winning Bid</th>
+                <th>Buy Now Price</th>
+                <th>Expiration Date</th>
+                <th>Status</th>
+                <th>User</th>
+                <th>Created by</th>
+            </tr>
+        </thead
+        <tbody>
+            <% auctions.each do |auction| %>
+                <tr>
+                    <td><%= auction.title %></td>
+                    <td><%= auction.description %></td>
+                    <td><%= auction.starting_bid %></td>
+                    <td><%= auction.winning_bid %></td>
+                    <td><%= auction.buy_now_price %></td>
+                    <td><%= auction.expire_date %></td>
+                    <td><%= auction.status %></td>
+                    <td><%= auction.user.username %>
+                </tr>
+            <% end %>
+        </tbody>
+    </table> 
+
+<p><%= link_to "Home", home_path %></p>
+<p><%= link_to "User Auctions", user_auctions_path %></p>
