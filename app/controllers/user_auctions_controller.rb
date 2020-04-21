@@ -47,7 +47,7 @@ class UserAuctionsController < ApplicationController
         auction = Auction.find(params[:id])
             respond_to do |format|
                 format.html do
-                if auction.update(params.require(:auction).permit(:title, :description, :starting_bid, :buy_now_price))
+                if auction.update(params.require(:auction).permit(:title, :description, :starting_bid, :buy_now_price, :expire_date, :status))
                     #flash[:success] = 'Auction updated successfully'
                     redirect_to user_auctions_url
                 else

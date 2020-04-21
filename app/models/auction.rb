@@ -30,5 +30,9 @@ class Auction < ApplicationRecord
         inverse_of: :auctions
     )
 
+    validates :title, presence: true
+    validates :starting_bid, presence: true
+    validates :buy_now_price, presence: true
+
 
 end
