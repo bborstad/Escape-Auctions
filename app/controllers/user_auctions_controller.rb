@@ -58,4 +58,14 @@ class UserAuctionsController < ApplicationController
         end
     end
 
+    def destroy
+        auction = Auction.find(params[:id])
+        auction.destroy
+        respond_to do |format|
+            format.html do
+                #flash[:success] = 'Auction deleted successfully'
+                redirect_to user_auctions_url
+            end
+        end
+    end
 end

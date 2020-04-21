@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'user/auctions/:id/edit', to: 'user_auctions#edit', as: 'edit_auction'
   patch 'user/auctions/:id', to: 'user_auctions#update'
   put 'user/auctions/:id', to: 'user_auctions#update' 
+  delete 'user/auctions/:id', to: 'user_auctions#destroy'
 
   root to: redirect('/home', status: 302)
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
