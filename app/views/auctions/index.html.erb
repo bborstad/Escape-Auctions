@@ -11,6 +11,7 @@
                 <th>Expiration Date</th>
                 <th>Status</th>
                 <th>User</th>
+                <th>Created by</th>
             </tr>
         </thead
         <tbody>
@@ -23,6 +24,7 @@
                     <td><%= auction.buy_now_price %></td>
                     <td><%= auction.expire_date %></td>
                     <td><%= auction.status %></td>
+                    <td><%= auction.user.username %>
                 </tr>
             <% end %>
         </tbody>

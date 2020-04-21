@@ -6,7 +6,7 @@
     <p>
       <%= auction.title %>
       <%= link_to '🔎', auction_path(auction) %>
-      <%= link_to '🖋', auction_quiz_path(auction) %>
+      <%= link_to '🖋', auction_path(auction) %>
       <%= link_to '🗑', auction_path(auction), method: :delete %>
     </p>
 

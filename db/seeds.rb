@@ -8,20 +8,20 @@
 
 # User seed data
 user1 = User.create!(
-    username: 'johnsmith'
+    username: 'johnsmith',
     password: 'password'
 )
 
 user2 = User.create!(
-    username: 'janesmith'
+    username: 'janesmith',
     password: 'password'
 )
 
 # Auction seed data
 auction1 = Auction.create!(
     user: user1,
-    title: 'Ford Model T',
-    description: 'Antique Ford Modle T',
+    title: '1996 Chevrolet Beretta',
+    description: 'Minor rust on the rear panel',
     starting_bid: '200.00',
     buy_now_price: '2000.00',
     winning_bid: '1700.00',
@@ -31,18 +31,18 @@ auction1 = Auction.create!(
 
 auction2 = Auction.create!(
     user: user2,
-    title: 'Ford Model F',
-    description: 'Ford Modle F, low mileage',
-    starting_bid: '200.00',
-    buy_now_price: '2000.00',
-    winning_bid: '1700.00',
+    title: '1998 Dodge Stratus',
+    description: 'Rebuilt engine',
+    starting_bid: '600.00',
+    buy_now_price: '2599.99',
+    winning_bid: '3150.45',
     expire_date: '20200617',
     status: 'true' 
 )
 
 auction3 = Auction.create!(
     user: user2,
-    title: 'Chevy Spark',
+    title: '2004 Saturn Vue',
     description: 'Slight hail damage',
     starting_bid: '200.00',
     buy_now_price: '1900.00',
