@@ -3,7 +3,7 @@ class UserAuctionsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-        auctions = Auction.includes(:user).all
+        auctions = current_user.auctions
         respond_to do |format|
             format.html { render :index, locals: {auctions: auctions } }
         end
@@ -17,7 +17,7 @@ class UserAuctionsController < ApplicationController
       end
       
       def create
-        auction = current_user.quizzes.build(params.require(:quiz).permit(:title, :description))
+        auction = current_user.auctions.build(params.require(:auction).permit(:title, :description, :starting_bid, :buy_now_price, :expire_date, :status))
         respond_to do |format|
           format.html do
             if auction.save
@@ -51,10 +51,10 @@ class UserAuctionsController < ApplicationController
             respond_to do |format|
                 format.html do
                 if auction.update(params.require(:auction).permit(:title, :description, :starting_bid, :buy_now_price, :expire_date, :status))
-                    #flash[:success] = 'Auction updated successfully'
+                    flash[:success] = 'Auction updated successfully'
                     redirect_to user_auctions_url
                 else
-                    #flash.now[:error] = 'Error: Auction could not be updated'
+                    flash.now[:error] = 'Error: Auction could not be updated'
                     render :edit, locals: { auction: auction }
                 end
             end
@@ -66,7 +66,7 @@ class UserAuctionsController < ApplicationController
         auction.destroy
         respond_to do |format|
             format.html do
-                #flash[:success] = 'Auction deleted successfully'
+                flash[:success] = 'Auction deleted successfully'
                 redirect_to user_auctions_url
             end
         end
