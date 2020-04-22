@@ -1,6 +1,7 @@
 class UserAuctionsController < ApplicationController
  
   before_action :authenticate_user!
+  before_action :require_permission, only: [:show, :edit, :update, :destroy]
   
   def index
         auctions = current_user.auctions
@@ -70,5 +71,11 @@ class UserAuctionsController < ApplicationController
                 redirect_to user_auctions_url
             end
         end
+    end
+
+    def require_permission
+      if Auction.find(params[:id]).user != current_user
+        redirect_to auctions_path, flash: { error: "You do not have permission to do that."}
+      end
     end
 end
