@@ -4,6 +4,7 @@
 #
 #  id            :bigint           not null, primary key
 #  buy_now_price :float
+#  description   :text
 #  expire_date   :date
 #  starting_bid  :float
 #  status        :boolean
@@ -28,8 +29,6 @@ class Auction < ApplicationRecord
         foreign_key: 'user_id',
         inverse_of: :auctions
     )
-
-    has_one :item
 
     validates :title, presence: true
     validates :starting_bid, presence: true
