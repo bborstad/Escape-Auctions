@@ -9,11 +9,13 @@
 # User seed data
 user1 = User.create!(
     username: 'johnsmith',
+    email: 'johnsmith@email.com',
     password: 'password'
 )
 
 user2 = User.create!(
     username: 'janesmith',
+    email: 'janesmith@email.com',
     password: 'password'
 )
 
