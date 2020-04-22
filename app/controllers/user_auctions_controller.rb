@@ -17,7 +17,7 @@ class UserAuctionsController < ApplicationController
       end
       
       def create
-        auction = current_user.auctions.build(params.require(:auction).permit(:title, :description, :starting_bid, :buy_now_price, :expire_date, :status))
+        auction = current_user.auctions.build(params.require(:auction).permit(:title, :starting_bid, :buy_now_price, :expire_date, :status))
         respond_to do |format|
           format.html do
             if auction.save
@@ -50,7 +50,7 @@ class UserAuctionsController < ApplicationController
         auction = Auction.find(params[:id])
             respond_to do |format|
                 format.html do
-                if auction.update(params.require(:auction).permit(:title, :description, :starting_bid, :buy_now_price, :expire_date, :status))
+                if auction.update(params.require(:auction).permit(:title, :starting_bid, :buy_now_price, :expire_date, :status))
                     flash[:success] = 'Auction updated successfully'
                     redirect_to user_auctions_url
                 else
