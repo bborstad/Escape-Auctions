@@ -30,8 +30,7 @@
     </div>
 
     <div>
-        <%= f.label :status %><br>
-        <%= f.text_field :status %>
+        <% f.text_field :status == 'true' %><br>
     </div>
 
     <%= f.submit 'Create Auction' %>

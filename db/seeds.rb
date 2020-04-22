@@ -23,6 +23,7 @@ user2 = User.create!(
 auction1 = Auction.create!(
     user: user1,
     title: '1996 Chevrolet Beretta',
+    description: 'Slight rust on rear panel',
     starting_bid: '200.00',
     buy_now_price: '2000.00',
     winning_bid: '1700.00',
@@ -33,6 +34,7 @@ auction1 = Auction.create!(
 auction2 = Auction.create!(
     user: user2,
     title: '1998 Dodge Stratus',
+    description: 'Rebuilt engine',
     starting_bid: '600.00',
     buy_now_price: '2599.99',
     winning_bid: '3150.45',
@@ -43,25 +45,10 @@ auction2 = Auction.create!(
 auction3 = Auction.create!(
     user: user2,
     title: '2004 Saturn Vue',
+    description: 'Lots of hail damage',
     starting_bid: '200.00',
     buy_now_price: '1900.00',
     winning_bid: '1700.00',
     expire_date: '20200917',
     status: 'true' 
-)
-
-#Items
-item1 = Item.create!(
-    auction: auction1,
-    description: 'Slight rust on rear panel'
-)
-
-item2 = Item.create!(
-    auction: auction2,
-    description: 'Rebuilt engine'
-)
-
-item3 = Item.create!(
-    auction: auction3,
-    description: 'Lots of hail damage'
 )

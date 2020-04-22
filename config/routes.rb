@@ -10,18 +10,7 @@ Rails.application.routes.draw do
   #Routes for Auction controller (general purpose auctions controller/no login necessary to view)
   get 'auctions', to: 'auctions#index', as: 'auctions'
 
-
   #Routes for User controller (pages related to user)
-
-  #Routes for Auction_item & Items controller (auction specific item)
-   get 'auction/:id/item', to: 'auction_item#index', as: 'auction_items'
-   get 'auction/:id/item/new', to: 'auction_item#new', as: 'new_auction_item'
-   post 'auction/:id/item', to: 'auction_item#create'
-   get 'item/:id', to: 'item#show', as: 'item'
-   get 'item/:id/edit', to: 'item#edit', as: 'edit_item'
-   patch 'item/:id', to: 'item#update'
-   put 'item/:id', to: 'item#update'
-   delete 'item/:id', to: 'item#destroy'
 
   #Routes for User_auction controller (user specific auctions)
   get 'user/auctions', to: 'user_auctions#index', as: 'user_auctions'

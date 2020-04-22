@@ -4,7 +4,7 @@
 <p><%= auction.title %></p>
 
 <p>Description:</p>
-<p><%= auction.item.description %></p>
+<p><%= auction.description %></p>
 
 <p>Starting Bid:</p>
 <p><%= auction.starting_bid %></p>
@@ -16,7 +16,11 @@
 <p><%= auction.expire_date %></p>
 
 <p>Auction status:</p>
-<p><%= auction.status %></p>
+<% if auction.status == true %>
+    <p>active</p>
+<% else %>
+    <p>expired</p>
+<% end %>
 
 <p>Picture:</p>
 
