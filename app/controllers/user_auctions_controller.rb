@@ -1,5 +1,8 @@
 class UserAuctionsController < ApplicationController
-    def index
+ 
+  before_action :authenticate_user!
+  
+  def index
         auctions = Auction.includes(:user).all
         respond_to do |format|
             format.html { render :index, locals: {auctions: auctions } }
