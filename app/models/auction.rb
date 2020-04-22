@@ -29,13 +29,7 @@ class Auction < ApplicationRecord
         inverse_of: :auctions
     )
 
-    has_one(
-        :item
-        class_name: 'Item',
-        foreign_key: 'auction_id',
-        inverse_of: :auction,
-        dependent: destroy
-    )
+    has_one :item
 
     validates :title, presence: true
     validates :starting_bid, presence: true

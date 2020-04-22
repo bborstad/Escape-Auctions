@@ -4,7 +4,6 @@
         <thead>
             <tr>
                 <th>Title</th>
-                <th>Description</th>
                 <th>Starting Bid</th>
                 <th>Winning Bid</th>
                 <th>Buy Now Price</th>
@@ -18,7 +17,6 @@
             <% auctions.each do |auction| %>
                 <tr>
                     <td><%= auction.title %></td>
-                    <td><%= auction.description %></td>
                     <td><%= auction.starting_bid %></td>
                     <td><%= auction.winning_bid %></td>
                     <td><%= auction.buy_now_price %></td>

@@ -17,10 +17,5 @@
 #  fk_rails_...  (auction_id => auctions.id)
 #
 class Item < ApplicationRecord
-    belongs_to(
-        :auction
-        class_name: 'Auction'
-        foreign_key: 'auction_id'
-        inverse_of: :auctions
-    )
+    belongs_to :auction, :class_name => 'Auction', :foreign_key => 'auction_id'
 end

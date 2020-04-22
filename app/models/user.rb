@@ -27,8 +27,8 @@ class User < ApplicationRecord
         :auctions,
         class_name: 'Auction',
         foreign_key: 'user_id',
-        inverse_of: :user
-        dependent: destroy
+        inverse_of: :user,
+        dependent: :destroy
     )
 
 end
