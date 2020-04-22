@@ -5,7 +5,7 @@ class CreateAuctions < ActiveRecord::Migration[6.0]
       t.text :description
       t.float :starting_bid
       t.float :buy_now_price
-      t.boolean :status
+      t.boolean :status, :default => true
       t.float :winning_bid
       t.date :expire_date
 
