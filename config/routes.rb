@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+ #devise routes
+  devise_for :users
   #Routes for static controller
   get 'home', to: 'pages#home', as: 'home'
 
