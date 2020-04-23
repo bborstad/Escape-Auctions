@@ -1,17 +1,23 @@
 <h1>My Auctions</h1>
 
-<% auctions.each do |auction| %>
-  <div id="<%= dom_id(auction) %>">
-    <br>
-    <p>
-      <%= auction.title %>
-      <%= link_to 'Show', auction_path(auction) %>
-      <%= link_to 'Edit', edit_auction_path(auction) %>
-      <%= link_to 'Delete', auction_path(auction), method: :delete %>
-    </p>
-
-  </div>
-<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Show</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% auctions.each do |auction| %>
+      <td><%= auction.title %></td>
+      <td><%= link_to 'Show', auction_path(auction) %></td>
+      <td><%= link_to 'Edit', edit_auction_path(auction) %></td>
+      <td><%= link_to 'Delete', auction_path(auction), method: :delete %></td>
+    <% end %>
+  </tbody>
+</table>
 
 <div>
   <p><%= link_to 'New Auction', new_auction_path %><p>
