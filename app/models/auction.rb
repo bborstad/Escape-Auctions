@@ -7,7 +7,7 @@
 #  description   :text
 #  expire_date   :date
 #  starting_bid  :float
-#  status        :boolean
+#  status        :boolean          default("true")
 #  title         :string
 #  winning_bid   :float
 #  created_at    :datetime         not null
@@ -34,5 +34,15 @@ class Auction < ApplicationRecord
     validates :starting_bid, presence: true
     validates :buy_now_price, presence: true
 
+    validate :auction_cannot_be_expired
+
+
+    def auction_cannot_be_expired
+        if expire_date.past
+            errors.add(:expire_date, "date cannot be before today")
+    end
+
+    # Processing expiration of auctions
+    #TODO: need to figure out how to implement this
 
 end

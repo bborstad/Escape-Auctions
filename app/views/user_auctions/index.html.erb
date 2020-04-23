@@ -10,12 +10,11 @@
       <%= link_to 'Delete', auction_path(auction), method: :delete %>
     </p>
 
-    <p>
-      <%= truncate auction.description, length: 100, separator: ' ' %>
-    </p>
   </div>
 <% end %>
 
-<p><%= link_to "Home", home_path %></p>
-<p><%= link_to "All Auctions", auctions_path %></p>
-
+<div>
+  <p><%= link_to 'New Auction', new_auction_path %><p>
+  <p><%= link_to "Home", home_path %></p>
+  <p><%= link_to "All Auctions", auctions_path %></p>
+</div>
