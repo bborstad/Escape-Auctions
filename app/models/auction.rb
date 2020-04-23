@@ -40,6 +40,7 @@ class Auction < ApplicationRecord
     def auction_cannot_be_expired
         if expire_date.past
             errors.add(:expire_date, "date cannot be before today")
+        end
     end
 
     # Processing expiration of auctions
