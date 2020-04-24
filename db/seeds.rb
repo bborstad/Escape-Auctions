@@ -52,3 +52,9 @@ auction3 = Auction.create!(
     expire_date: '20200917',
     status: 'true' 
 )
+
+review1 = Review.create!(
+    user:user2,
+    auction_listing: auction1
+    description: 'Quick and Speedy Responces! Would buy again'
+)

@@ -23,6 +23,13 @@ Rails.application.routes.draw do
   delete 'user/auctions/:id', to: 'user_auctions#destroy'
 
 
+  #Routes for User Review Controller 
+  get 'user/reviews/', to: 'user_reviews#index', as: 'user_reviews'
+  get 'user/review/submission', to: 'user_reviews#submission', as: 'submission'
+  post 'user/review/submission', to: 'user_reviews#update', as: 'update'
+ 
+
+
   #Root route
   root to: redirect('/home', status: 302)
 

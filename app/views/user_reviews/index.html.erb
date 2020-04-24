@@ -1,0 +1,18 @@
+<h1> User Reviews </h1>
+
+  <p><%= link_to "Home", home_path %></p>
+  <p><%= link_to "All Auctions", auctions_path %></p>
+
+
+<Head> Good Afternoon <%= current_user.username%> !</head>
+  
+<p> Current Reviews for your listings </p>
+
+<% auctions.each do |auction| %>
+  <div id="<%= dom_id(auction) %>">
+    <br>
+    <p> <%= auction.title %> </p>
+    <p> Received Review:</p>
+
+  </div>
+<% end %>
