@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   #Routes for Auction controller (general purpose auctions controller/no login necessary to view)
   get 'auctions', to: 'auctions#index', as: 'auctions'
+  get 'auctions/:id', to: 'auctions#show', as: 'details'
 
   #Routes for User controller (pages related to user)
 
