@@ -10,12 +10,16 @@
     </tr>
   </thead>
   <tbody>
+    
     <% auctions.each do |auction| %>
+      <tr>
       <td><%= auction.title %></td>
       <td><%= link_to 'Show', auction_path(auction) %></td>
       <td><%= link_to 'Edit', edit_auction_path(auction) %></td>
       <td><%= link_to 'Delete', auction_path(auction), method: :delete %></td>
-    <% end %>
+      </tr>
+      <% end %>
+    
   </tbody>
 </table>
 
