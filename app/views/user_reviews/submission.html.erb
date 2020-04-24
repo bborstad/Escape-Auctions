@@ -6,3 +6,34 @@
 <p> Feeback matters to our Sellers. Please submit the form below to leave a review. </p>
 
 <h2> Forum </h2>
+
+<%= form_with url: update_path, local: true, method: :post do %>
+
+<div>
+  <%= label_tag "name"%>
+  <%= text_field_tag "name", nil%>
+</div>
+
+<div>
+  <%= label_tag "email"%>
+  <%= email_field_tag "email", nil%>
+</div>
+
+<span> Would you like a follow-up reply? </span>
+<div>
+  <%= radio_button_tag "reply", true, true%>
+  <%= label_tag "reply_yes", 'Yes'%>
+</div>
+<div>
+  <%= radio_button_tag "reply", false, false%>
+  <%= label_tag "reply_no", 'No'%>
+</div>
+
+<div>
+  <%= label_tag "message"%>
+  <%= text_area_tag "message", nil, size: "27x7"%>
+</div>
+
+  <%= submit_tag "Post Review"%>
+
+<% end %>

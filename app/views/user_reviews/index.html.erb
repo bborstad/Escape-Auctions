@@ -4,13 +4,14 @@
   <p><%= link_to "All Auctions", auctions_path %></p>
 
 
-<Head> Good Afternoon <%= current_user.username%> !</head>
+<h2> Good Afternoon <%= current_user.username%> !</h2>
   
-<p> Current Reviews for your listings </p>
+<p> Current reviews for your listings </p>
 
 <% auctions.each do |auction| %>
   <div id="<%= dom_id(auction) %>">
     <br>
+    <p> Listing 1: </p>
     <p> <%= auction.title %> </p>
     <p> Received Review:</p>
 
