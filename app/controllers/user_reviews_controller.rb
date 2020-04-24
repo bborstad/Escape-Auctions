@@ -12,7 +12,7 @@ class UserReviewsController < ApplicationController
         form_complete = true
         required.each do |f|
             if params.has_key? f and not params[f].blank?
-     # that's good news. do nothing
+                # do nothing
             else
                 form_complete = false
             end
