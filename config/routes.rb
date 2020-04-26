@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   put 'user/auctions/:id', to: 'user_auctions#update' 
   delete 'user/auctions/:id', to: 'user_auctions#destroy'
 
+  get '/search' => 'search#search', :as => 'search_page'
+
 
   #Root route
   root to: redirect('/home', status: 302)

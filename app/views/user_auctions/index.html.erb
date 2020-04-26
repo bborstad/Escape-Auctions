@@ -51,6 +51,7 @@
   <div class="card-header">
   <%= auction.title %>
   </div>
+  <%= image_tag(auction.image, style:'height: 200px; width: 100%; display: block;') %>
   <div class="card-body">
     <h4 class="card-title"> End Date:
     <%= auction.expire_date %> 

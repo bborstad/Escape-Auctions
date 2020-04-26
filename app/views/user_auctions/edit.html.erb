@@ -65,6 +65,15 @@
     <%= f.text_field :expire_date %>
   </div>
 
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image%>
+  </div>
+
+  <div>
+    <%= f.input :tag_list %>
+  </div>
+
   <%= f.submit 'Update Auction' %>
 
 <% end %>
