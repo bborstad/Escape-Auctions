@@ -18,8 +18,13 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "../node_modules/bootswatch/dist/darkly/bootswatch";
 
+
 .card {
-    margin: 0 auto; /* Added */
-    float: none; /* Added */
-    margin-bottom: 10px; /* Added */
+    display:inline-block;
+    justify-content: center;
+
 }
+
+.card + .card {
+    margin: 0 0 0 120px;
+   }
