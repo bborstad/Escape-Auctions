@@ -22,6 +22,13 @@
     <p>expired</p>
 <% end %>
 
+<p> tag list:</p>
+  <p>
+    <% auction.tag_list.each do |tag| %>
+      <%= tag %>,
+    <% end %>
+  </p>
 <p>Picture:</p>
+<%= image_tag(auction.image) %>
 
 
