@@ -12,7 +12,4 @@ class AuctionsController < ApplicationController
             format.html { render :show, locals: { auction: auction } }
         end
     end
-
-    def search
-    end
 end

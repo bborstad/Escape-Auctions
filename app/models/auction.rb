@@ -30,6 +30,8 @@ class Auction < ApplicationRecord
         inverse_of: :auctions
     )
 
+    has_one_attached :image
+
     validates :title, presence: true
     validates :starting_bid, presence: true
     validates :buy_now_price, presence: true
