@@ -78,4 +78,5 @@ class UserAuctionsController < ApplicationController
         redirect_to auctions_path, flash: { error: "You do not have permission to do that."}
       end
     end
+
 end
