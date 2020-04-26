@@ -59,12 +59,9 @@ class Auction < ApplicationRecord
         end
     end
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 40239d4f5e1b295f0ea65b060de342ddb5476074
     # Processing expiration of auctions
     #TODO: need to figure out how to implement this
 
