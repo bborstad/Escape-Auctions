@@ -60,8 +60,9 @@
   </ul>
   <div class="card-body">
     
-    <%= link_to 'Edit', edit_auction_path(auction) %>
-    <%= link_to 'Delete', auction_path(auction), method: :delete %>
+    <%= link_to 'Edit    ', edit_auction_path(auction) %>
+    <%= link_to 'Delete   ', auction_path(auction), method: :delete %>
+    <p><%= link_to "Received Reviews ", user_reviews_path %></p>
   </div>
   <div class="card-footer text-muted">
     <p>Auction status:</p>
@@ -72,6 +73,8 @@
 <% end %>
   </div>
 </div>
+
+
 
 
 
