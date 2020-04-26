@@ -1,34 +1,49 @@
-<h1>Welcome!</h1>
-
-
-
-<p><%= link_to "All Auctions", auctions_path %></p>
-<p><%= link_to "User Auctions", user_auctions_path %></p>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      <li class="navbar-brand">
+        <%= link_to 'Home', root_path, class: 'nav_link' %>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+      <li class="navbar-brand">
+        <%= link_to 'All Auctions', auctions_path, class: 'nav_link' %>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+      <li class="navbar-brand">
+        <%= link_to 'User Auctions', user_auctions_path, class: 'nav_link' %>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
+      <% if user_signed_in? %>
+       <li class="nav-item">
+        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
       </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %>
+     </li>
+     <li class="nav-item">
+       <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
+     </li>
+      <% end %>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <input class="form-control mr-sm-2" type="text" placeholder="Theoretical Search">
       <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
 </nav>
+
+
+
+
+<div class="jumbotron">
+  <h1 class="display-3">WELCOME TO AUCTIONS ESCAPE!</h1>
+  <p class="lead">Best deals, Best buys, Auction Escape!</p>
+  <hr class="my-4">
+  <p>We are an auction escape paradise where you can come find the best auctions. Check out some of our featured items below!</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href=auctions role="button">Join US</a>
+  </p>
+</div>
