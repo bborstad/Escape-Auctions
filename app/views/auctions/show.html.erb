@@ -1,21 +1,63 @@
-<h1>Show</h1>
 
-<p>Title:</p>
-<p><%= auction.title %></p>
 
-<p>Description:</p>
-<p><%= auction.description %></p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-<p>Starting Bid:</p>
-<p><%= auction.starting_bid %></p>
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="navbar-brand">
+        <%= link_to 'Home', root_path, class: 'nav_link' %>
+      </li>
+      <li class="navbar-brand">
+        <%= link_to 'All Auctions', auctions_path, class: 'nav_link' %>
+      </li>
+      <li class="navbar-brand">
+        <%= link_to 'User Auctions', user_auctions_path, class: 'nav_link' %>
+      </li>
+      <% if user_signed_in? %>
+       <li class="nav-item">
+        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+      </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %>
+     </li>
+     <li class="nav-item">
+       <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
+     </li>
+      <% end %>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Theoretical Search">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
 
-<p>Buy Now Price:</p>
-<p><%= auction.buy_now_price %></p>
-
-<p>Expiration Date:</p>
-<p><%= auction.expire_date %></p>
-
-<p>Auction status:</p>
+<div class="card mb-3" style="width: 18rem;">
+  
+  <h3 class="card-header"></h3>
+  
+  <div class="card-body">
+    <h5 class="card-title"><%= auction.title%></h5>
+    <h6 class="card-subtitle text-muted"> Created by: <%= auction.user.username %></h6>
+  </div>
+  <img style="height: 200px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_158bd1d28ef%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_158bd1d28ef%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22129.359375%22%20y%3D%2297.35%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image">
+  <div class="card-body">
+    <p class="card-text"><%= auction.description%></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Starting Bid: <%= auction.starting_bid %></li>
+    <li class="list-group-item">Buy Now Price: <%= auction.buy_now_price %></li>
+    <li class="list-group-item">Expire Date: <%= auction.expire_date %></li>
+  </ul>
+  <div class="card-body">
+     <%= link_to "Bid Now", details_path(auction)%>  #not functional
+  </div>
+  <div class="card-footer text-muted">
+    <p>Auction status:</p>
 <% if auction.status == true %>
     <p>active</p>
 <% else %>
@@ -25,4 +67,6 @@
 <p>Picture:</p>
 <p> Click the link below to give a Review </p>
 <p><%= link_to "Submission", update_path %></p>
+  </div>
+</div>
 
