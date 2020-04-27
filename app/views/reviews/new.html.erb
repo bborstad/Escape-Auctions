@@ -49,18 +49,18 @@
 <%= form_with model: review, url: reviews_path, method: :post, local: true, scope: :review do |form| %>
 
  <div>
-   <%= form.label :Name %><br>
-   <%= form.text_field :Name %>
+   <%= form.label :name %><br>
+   <%= form.text_field :name %>
  </div>
 
  <div>
-    <%= form.label :Email %><br>
-    <%= form.email_field :Email %>
+    <%= form.label :email %><br>
+    <%= form.email_field :email %>
  </div>
   
  <div>
-    <%= form.label :Message %><br>
-    <%= form.text_area :Message %>
+    <%= form.label :message %><br>
+    <%= form.text_area :nessage %>
  </div>
 
 <%= form.submit "Post Review" %>  
