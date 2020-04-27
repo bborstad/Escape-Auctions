@@ -26,6 +26,13 @@ Rails.application.routes.draw do
   get '/search' => 'search#search', :as => 'search_page'
 
 
+  #Routes for User Review Controller 
+  get 'user/reviews/', to: 'user_reviews#index', as: 'user_reviews'
+  get 'user/review/submission', to: 'user_reviews#submission', as: 'submission'
+  post 'user/review/submission', to: 'user_reviews#update', as: 'update'
+ 
+
+
   #Root route
   root to: redirect('/home', status: 302)
 

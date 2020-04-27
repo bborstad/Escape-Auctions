@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -14,6 +15,9 @@
       <li class="navbar-brand">
         <%= link_to 'User Auctions', user_auctions_path, class: 'nav_link' %>
       </li>
+      <li class="navbar-brand">
+        <%= link_to 'New Auction', new_auction_path, class: 'nav_link' %>
+      </li>
       <% if user_signed_in? %>
        <li class="nav-item">
         <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
@@ -27,28 +31,25 @@
      </li>
       <% end %>
     </ul>
-    <%= form_tag(search_page_path, :method => "get", class:"form-inline my-2 my-lg-0") do %>
-      <div class="input-group">
-        <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
-        <div class="input-group-btn">
-          <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
-        </div>
-      </div>
-    <% end %>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Theoretical Search">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    </form>
   </div>
 </nav>
 
-
-
-
-
-
 <div class="jumbotron">
-  <h1 class="display-3">WELCOME TO AUCTIONS ESCAPE!</h1>
-  <p class="lead">Best deals, Best buys, Auction Escape!</p>
+  <h1 class="display-3">User Reviews</h1>
+  <p class="lead">Current reviews for your listings</p>
   <hr class="my-4">
-  <p>We are an auction escape paradise where you can come find the best auctions. Check out some of our featured items below!</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href=auctions role="button">Join US</a>
-  </p>
-</div>
+ 
+<h2> Reviews received for <%= current_user.username%> </h2>
+
+<% auctions.each do |auction| %>
+  <div id="<%= dom_id(auction) %>">
+    <br>
+    <p> <%= auction.title %> </p>
+    <p> Received Review:</p>
+
+  </div>
+<% end %>
