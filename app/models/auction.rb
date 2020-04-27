@@ -29,6 +29,13 @@ class Auction < ApplicationRecord
         foreign_key: 'user_id',
         inverse_of: :auctions
     )
+    has_many(
+        :reviews,
+        class_name: 'Reviews',
+        foreign_key: 'auction_id',
+        inverse_of: :auctions,
+        dependent: :destroy
+    )
 
     acts_as_taggable_on :tags
 

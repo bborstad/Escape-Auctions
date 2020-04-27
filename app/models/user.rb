@@ -30,5 +30,11 @@ class User < ApplicationRecord
         inverse_of: :user,
         dependent: :destroy
     )
-
+    has_many(
+        :reviews,
+        class_name: 'Reviews',
+        foreign_key: 'user_id',
+        inverse_of: :user,
+        dependent: :destroy
+    )
 end
