@@ -1,40 +1,4 @@
-
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarColor01">
-    <ul class="navbar-nav mr-auto">
-      <li class="navbar-brand">
-        <%= link_to 'Home', root_path, class: 'nav_link' %>
-      </li>
-      <li class="navbar-brand">
-        <%= link_to 'All Auctions', auctions_path, class: 'nav_link' %>
-      </li>
-      <li class="navbar-brand">
-        <%= link_to 'User Auctions', user_auctions_path, class: 'nav_link' %>
-      </li>
-      <% if user_signed_in? %>
-       <li class="nav-item">
-        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
-      </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %>
-     </li>
-     <li class="nav-item">
-       <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
-     </li>
-      <% end %>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Theoretical Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
+<%= render "layouts/navbar" %>
 
 <div class="card mb-3" style="width: 18rem;">
 
@@ -51,10 +15,15 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Starting Bid: <%= auction.starting_bid %></li>
     <li class="list-group-item">Buy Now Price: <%= auction.buy_now_price %></li>
+    <a class="btn btn-primary" href='/purchased'>Purchase</a>
     <li class="list-group-item">Expire Date: <%= auction.expire_date %></li>
   </ul>
   <div class="card-body">
-     <%= link_to "Bid Now", details_path(auction)%>  #not functional
+    <%= form_with model: Bid, url: 'auctions/:id/bid', method: :post, scope: :bid do |f| %>
+      <%= f.text_field :amount %>
+      <% f.text_field :auction => auction %>
+      <%= f.submit "place bid" %>
+    <% end %>
   </div>
   <div class="card-footer text-muted">
     <p>Auction status:</p>

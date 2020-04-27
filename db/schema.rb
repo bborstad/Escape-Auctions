@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_27_143843) do
+ActiveRecord::Schema.define(version: 2020_04_27_192845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,12 +42,21 @@ ActiveRecord::Schema.define(version: 2020_04_27_143843) do
     t.float "starting_bid"
     t.float "buy_now_price"
     t.boolean "status", default: true
-    t.float "winning_bid"
     t.date "expire_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_auctions_on_user_id"
+  end
+
+  create_table "bids", force: :cascade do |t|
+    t.decimal "amount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "auction_id"
+    t.bigint "user_id"
+    t.index ["auction_id"], name: "index_bids_on_auction_id"
+    t.index ["user_id"], name: "index_bids_on_user_id"
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
@@ -93,5 +102,7 @@ ActiveRecord::Schema.define(version: 2020_04_27_143843) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "auctions", "users"
+  add_foreign_key "bids", "auctions"
+  add_foreign_key "bids", "users"
   add_foreign_key "taggings", "tags"
 end

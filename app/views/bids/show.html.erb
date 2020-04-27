@@ -1,0 +1,20 @@
+<%= render "layouts/navbar" %>
+
+<% auctions.each do |auction| %>
+
+  <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+    <div class="card-header">
+      <%= auction.title %>
+    </div>
+    <%= image_tag(auction.image, style:'height: 200px; width: 100%; display: block;') %>
+    <div class="card-body">
+      <h4 class="card-title"> End Date:
+        <%= auction.expire_date %>
+      </h4>
+      <li><%= link_to 'Show', auction_path(auction) %>
+      <li><%= link_to 'Edit', edit_auction_path(auction) %>
+      <li><%= link_to 'Delete', auction_path(auction), method: :delete %>
+      <li><%= link_to "Received Reviews ", user_reviews_path %></li>
+    </div>
+  </div>
+<% end %>
