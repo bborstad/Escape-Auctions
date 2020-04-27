@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   #Routes for Auction controller (general purpose auctions controller/no login necessary to view)
   get 'auctions', to: 'auctions#index', as: 'auctions'
+  get 'auctions/:id', to: 'auctions#show', as: 'details'
 
   #Routes for User controller (pages related to user)
 
@@ -21,6 +22,15 @@ Rails.application.routes.draw do
   patch 'user/auctions/:id', to: 'user_auctions#update'
   put 'user/auctions/:id', to: 'user_auctions#update' 
   delete 'user/auctions/:id', to: 'user_auctions#destroy'
+
+  get '/search' => 'search#search', :as => 'search_page'
+
+
+  #Routes for User Review Controller 
+  get 'user/reviews/', to: 'user_reviews#index', as: 'user_reviews'
+  get 'user/review/submission', to: 'user_reviews#submission', as: 'submission'
+  post 'user/review/submission', to: 'user_reviews#update', as: 'update'
+ 
 
 
   #Root route

@@ -30,6 +30,22 @@ class Auction < ApplicationRecord
         inverse_of: :auctions
     )
 
+    acts_as_taggable_on :tags
+
+    has_one_attached :image
+
+    attr_accessor :seed_flag
+
+    after_commit :image_nil, on: [:create, :update]
+
+    private def image_nil
+        unless seed_flag
+            unless image.attached?
+                self.image.attach(io: File.open(Rails.root.join("app", "assets", "images", "default.png")), filename: 'default.png', content_type: 'image/png')
+            end
+        end
+    end
+
     validates :title, presence: true
     validates :starting_bid, presence: true
     validates :buy_now_price, presence: true
@@ -38,9 +54,13 @@ class Auction < ApplicationRecord
 
 
     def auction_cannot_be_expired
-        if expire_date.past
+        if expire_date.past?
             errors.add(:expire_date, "date cannot be before today")
+        end
     end
+
+
+
 
     # Processing expiration of auctions
     #TODO: need to figure out how to implement this

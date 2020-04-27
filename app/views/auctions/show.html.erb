@@ -1,4 +1,5 @@
 
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -35,45 +36,38 @@
   </div>
 </nav>
 
-<h1>Edit Question</h1>
+<div class="card mb-3" style="width: 18rem;">
 
-<%= form_with model: auction, url: auction_path, method: :patch, local: true, scope: :auction do |f| %>
+  <h3 class="card-header"></h3>
 
-  <div>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+  <div class="card-body">
+    <h5 class="card-title"><%= auction.title%></h5>
+    <h6 class="card-subtitle text-muted"> Created by: <%= auction.user.username %></h6>
   </div>
-
-  <div>
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
+  <%= image_tag(auction.image, style:'height: 200px; width: 100%; display: block;') %>
+  <div class="card-body">
+    <p class="card-text"><%= auction.description%></p>
   </div>
-
-  <div>
-    <%= f.label :starting_bid %><br>
-    <%= f.text_field :starting_bid %>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Starting Bid: <%= auction.starting_bid %></li>
+    <li class="list-group-item">Buy Now Price: <%= auction.buy_now_price %></li>
+    <li class="list-group-item">Expire Date: <%= auction.expire_date %></li>
+  </ul>
+  <div class="card-body">
+     <%= link_to "Bid Now", details_path(auction)%>  #not functional
   </div>
-
-
-  <div>
-    <%= f.label :buy_now_price %><br>
-    <%= f.text_field :buy_now_price %>
-  </div>
-
-  <div>
-    <%= f.label :expire_date %><br>
-    <%= f.text_field :expire_date %>
-  </div>
-
-  <div class="field">
-    <%= f.label :image %>
-    <%= f.file_field :image%>
-  </div>
-
-  <div>
-    <%= f.input :tag_list %>
-  </div>
-
-  <%= f.submit 'Update Auction' %>
-
+  <div class="card-footer text-muted">
+    <p>Auction status:</p>
+<% if auction.status == true %>
+    <p>active</p>
+<% else %>
+    <p>expired</p>
 <% end %>
+    </div>
+<li><%= link_to "Leave a Review", update_path %></li>
+<p> tag list:</p>
+<p>
+  <% auction.tag_list.each do |tag| %>
+    <%= tag %>,
+  <% end %>
+</p>

@@ -15,6 +15,9 @@
       <li class="navbar-brand">
         <%= link_to 'User Auctions', user_auctions_path, class: 'nav_link' %>
       </li>
+      <li class="navbar-brand">
+        <%= link_to 'New Auction', new_auction_path, class: 'nav_link' %>
+      </li>
       <% if user_signed_in? %>
        <li class="nav-item">
         <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
@@ -35,45 +38,42 @@
   </div>
 </nav>
 
-<h1>Edit Question</h1>
+<div class="jumbotron">
+  <h1 class="display-3">Leave Review</h1>
+  <p class="lead">Feeback matters to our Sellers. Please submit the form below to leave a review.</p>
+  <hr class="my-4">
 
-<%= form_with model: auction, url: auction_path, method: :patch, local: true, scope: :auction do |f| %>
+<% if local_assigns.has_key? :status_msg %>
+  <p><%= status_msg %></p>
+<% end %>
 
-  <div>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
+<%= form_with url: update_path, local: true, method: :post do %>
 
-  <div>
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
+<div>
+  <%= label_tag "name:"%>
+  <%= text_field_tag "name", feedback.fetch(:name, nil)%>
+</div>
 
-  <div>
-    <%= f.label :starting_bid %><br>
-    <%= f.text_field :starting_bid %>
-  </div>
+<div>
+  <%= label_tag "email : "%>
+  <%= email_field_tag "email", feedback.fetch(:email, nil)%>
+</div>
 
+<span> Would you like a follow-up reply? </span>
+<div>
+  <%= radio_button_tag "reply", true, feedback.fetch(:reply, nil) == true.to_s %>
+  <%= label_tag "reply_yes", 'Yes'%>
+</div>
+<div>
+  <%= radio_button_tag "reply", false, feedback.fetch(:reply, nil) == false.to_s%>
+  <%= label_tag "reply_no", 'No'%>
+</div>
 
-  <div>
-    <%= f.label :buy_now_price %><br>
-    <%= f.text_field :buy_now_price %>
-  </div>
+<div>
+  <%= label_tag "message"%>
+  <%= text_area_tag "message",feedback.fetch(:message, nil), size: "27x7"%>
+</div>
 
-  <div>
-    <%= f.label :expire_date %><br>
-    <%= f.text_field :expire_date %>
-  </div>
-
-  <div class="field">
-    <%= f.label :image %>
-    <%= f.file_field :image%>
-  </div>
-
-  <div>
-    <%= f.input :tag_list %>
-  </div>
-
-  <%= f.submit 'Update Auction' %>
+  <%= submit_tag "Post Review"%>
 
 <% end %>
