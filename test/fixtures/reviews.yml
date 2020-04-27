@@ -8,7 +8,9 @@
 #  name        :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  auction_id  :integer
 #  auctions_id :bigint
+#  user_id     :integer
 #  users_id    :bigint
 #
 # Indexes

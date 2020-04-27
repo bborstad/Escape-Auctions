@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
+  before_action :require_permission, only: [:destroy]
+  
 
   def index
     reviews = Review.all
@@ -24,6 +26,7 @@ class ReviewsController < ApplicationController
 
   def create
     review = Review.new(params.require(:review).permit(:name, :email, :message,))
+    
     respond_to do |format|
       format.html do
     if review.save
@@ -46,6 +49,12 @@ def destroy
           flash[:success] = 'Review deleted successfully'
           redirect_to reviews_url
       end
+  end
+end
+
+def require_permission
+  if Review.find(params[:id]).user != current_user
+    redirect_to reviews_path, flash: { error: "You do not have permission to do that."}
   end
 end
 
