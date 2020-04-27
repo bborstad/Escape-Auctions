@@ -46,7 +46,6 @@ auction2 = Auction.create!(
     :seed_flag => true
 )
 
-
 auction3 = Auction.create!(
     user: user2,
     title: '2004 Saturn Vue',
@@ -58,6 +57,14 @@ auction3 = Auction.create!(
     status: 'true',
     :seed_flag => true
 )
+
+Review1 = Review.create!(
+    name: 'Corey',
+    email: 'Bedell@email.com',
+    message: 'Great commmunication!',
+
+)
+
 
 auction1.tag_list.add('Chevy',"90s","Coupe")
 auction2.tag_list.add('Dodge',"90s","Sedan","Rebuilt Engine")

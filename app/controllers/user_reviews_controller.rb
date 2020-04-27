@@ -1,5 +1,5 @@
 class UserReviewsController < ApplicationController
-
+    before_action :authenticate_user!
     def index
         auctions = current_user.auctions
         respond_to do |format|
@@ -23,7 +23,9 @@ class UserReviewsController < ApplicationController
             form_status_msg = 'Please fill in all fields and resubmit.'
         end
         respond_to do |format|
-            format.html {render :update, locals: {status_msg: form_status_msg, feedback: params}}
+            format.html {
+                flash.now[:status_msg] = form_status_msg
+                render :update, locals: {feedback: params}}
         end
     end
 

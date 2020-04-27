@@ -44,9 +44,8 @@
   <hr class="my-4">
 
 <% if local_assigns.has_key? :status_msg %>
-  <p><%= status_msg %></p>
+  <p><%= flash[:status_msg] %></p>
 <% end %>
-
 <%= form_with url: update_path, local: true, method: :post do %>
 
 <div>
