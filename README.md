@@ -6,3 +6,9 @@
   3. rails acts_as_taggable_on_engine:install:migrations
   4. rails db:migrate:reset db:seed
   5. rails s, and proceed to evaluate the app.
+
+# Provided users:
+  1. Email:johnsmith@email.com
+     Password:password
+  1. Email:janesmith@email.com
+     Password:password
