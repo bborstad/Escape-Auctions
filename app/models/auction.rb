@@ -9,7 +9,6 @@
 #  starting_bid  :float
 #  status        :boolean          default("true")
 #  title         :string
-#  winning_bid   :float
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  user_id       :bigint
@@ -23,6 +22,8 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Auction < ApplicationRecord
+    has_many :bids
+
     belongs_to(
         :user,
         class_name: 'User',

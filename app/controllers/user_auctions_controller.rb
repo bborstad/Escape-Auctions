@@ -40,6 +40,7 @@ class UserAuctionsController < ApplicationController
         end
     end
 
+
     def edit
         auction = Auction.find(params[:id])
         respond_to do |format|
@@ -78,4 +79,10 @@ class UserAuctionsController < ApplicationController
         redirect_to auctions_path, flash: { error: "You do not have permission to do that."}
       end
     end
+
+  def purchase
+    respond_to do |format|
+      format.html { render :'pages/purchased', locals: { } }
+    end
+  end
 end

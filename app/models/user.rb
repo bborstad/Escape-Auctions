@@ -30,5 +30,5 @@ class User < ApplicationRecord
         inverse_of: :user,
         dependent: :destroy
     )
-
+  has_many :bids
 end
