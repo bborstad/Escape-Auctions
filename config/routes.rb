@@ -32,12 +32,14 @@ Rails.application.routes.draw do
   post 'user/review/submission', to: 'user_reviews#update', as: 'update'
  
   
-  
-  get 'reviews/index', to: 'reviews#index', as: 'reviews'
-  get 'reviews/:id', to: 'reviews#show', as: 'review'
-  get 'reviews/new', to: 'reviews#new', as: 'new_review' # new review
-  post 'reviews', to: 'reviews#create'
  
+  get 'reviews/index', to: 'reviews#index', as: 'reviews'
+  
+  get 'reviews/new', to: 'reviews#new', as: 'new_review' # new review
+  post 'reviews/index', to: 'reviews#create'
+  
+  get 'reviews/:id', to: 'reviews#show', as: 'review'
+  delete 'reviews/:id', to: 'reviews#destroy'
 
 
   #Root route
