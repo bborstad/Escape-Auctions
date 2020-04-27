@@ -50,7 +50,5 @@ class Auction < ApplicationRecord
     validates :starting_bid, presence: true
     validates :buy_now_price, presence: true
 
-    # Processing expiration of auctions
-    #TODO: need to figure out how to implement this
 
 end

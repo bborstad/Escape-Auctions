@@ -28,4 +28,8 @@
 .card + .card {
     margin: 0 0 0 120px;
 
-   }
+}
+
+.alert-dismissible {
+  padding-left: $close-font-size + $alert-padding-x * 2;
+}
