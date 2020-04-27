@@ -9,7 +9,6 @@
 #  starting_bid  :float
 #  status        :boolean          default(TRUE)
 #  title         :string
-#  winning_bid   :float
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  user_id       :bigint

@@ -42,12 +42,21 @@ ActiveRecord::Schema.define(version: 2020_04_27_225506) do
     t.float "starting_bid"
     t.float "buy_now_price"
     t.boolean "status", default: true
-    t.float "winning_bid"
     t.date "expire_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_auctions_on_user_id"
+  end
+
+  create_table "bids", force: :cascade do |t|
+    t.decimal "amount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "auction_id"
+    t.bigint "user_id"
+    t.index ["auction_id"], name: "index_bids_on_auction_id"
+    t.index ["user_id"], name: "index_bids_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -107,6 +116,8 @@ ActiveRecord::Schema.define(version: 2020_04_27_225506) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "auctions", "users"
+  add_foreign_key "bids", "auctions"
+  add_foreign_key "bids", "users"
   add_foreign_key "reviews", "auctions", column: "auctions_id"
   add_foreign_key "reviews", "users", column: "users_id"
   add_foreign_key "taggings", "tags"
