@@ -35,6 +35,15 @@ Rails.application.routes.draw do
 
   get 'purchased', to: 'user_auctions#purchase', as: 'purchase'
  
+  
+ 
+  get 'reviews/index', to: 'reviews#index', as: 'reviews'
+  
+  get 'reviews/new', to: 'reviews#new', as: 'new_review' # new review
+  post 'reviews/index', to: 'reviews#create'
+  
+  get 'reviews/:id', to: 'reviews#show', as: 'review'
+  delete 'reviews/:id', to: 'reviews#destroy'
 
 
   #Root route

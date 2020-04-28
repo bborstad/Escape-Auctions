@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_27_192845) do
+ActiveRecord::Schema.define(version: 2020_04_27_225506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,20 @@ ActiveRecord::Schema.define(version: 2020_04_27_192845) do
     t.index ["user_id"], name: "index_bids_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "users_id"
+    t.bigint "auctions_id"
+    t.integer "user_id"
+    t.integer "auction_id"
+    t.index ["auctions_id"], name: "index_reviews_on_auctions_id"
+    t.index ["users_id"], name: "index_reviews_on_users_id"
+  end
+
   create_table "taggings", id: :serial, force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
@@ -104,5 +118,7 @@ ActiveRecord::Schema.define(version: 2020_04_27_192845) do
   add_foreign_key "auctions", "users"
   add_foreign_key "bids", "auctions"
   add_foreign_key "bids", "users"
+  add_foreign_key "reviews", "auctions", column: "auctions_id"
+  add_foreign_key "reviews", "users", column: "users_id"
   add_foreign_key "taggings", "tags"
 end

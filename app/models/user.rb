@@ -30,5 +30,7 @@ class User < ApplicationRecord
         inverse_of: :user,
         dependent: :destroy
     )
+  has_many :reviews
+     
   has_many :bids
 end

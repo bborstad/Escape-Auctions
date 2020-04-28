@@ -7,7 +7,7 @@
 #  description   :text
 #  expire_date   :date
 #  starting_bid  :float
-#  status        :boolean          default("true")
+#  status        :boolean          default(TRUE)
 #  title         :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
