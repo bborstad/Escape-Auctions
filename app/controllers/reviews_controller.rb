@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
   
 
   def index
-    reviews = Review.all
+    reviews = current_user.reviews
     respond_to do |format|
       format.html {render :index, locals: {reviews:reviews}}
     end
@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
 
   def new 
     review = Review.new
-    respond_to do |format|
+    respond_to do |format| 
       format.html {render :new, locals: {review: review}}
     end 
   end 
@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
     end
 
   def create
-    review = Review.new(params.require(:review).permit(:name, :email, :message,))
+    review = current_user.reviews.build(params.require(:review).permit(:name, :email, :message,))
     
     respond_to do |format|
       format.html do
