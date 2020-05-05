@@ -2,13 +2,11 @@
 
 <div class="jumbotron">
   <h1 class="display-3">Detailed Overview</h1>
-  <p class="lead">This page demostrates how your listing appears to other users. </p>
+  <p class="lead">Some more details about your auction.</p>
   
 </div>
 
 <div class="card mb-3" style="width: 18rem;">
-  
-  <h3 class="card-header"> Your Listing</h3>
   
   <div class="card-body">
     <h5 class="card-title"><%= auction.title%></h5>
@@ -19,16 +17,11 @@
     <p class="card-text"><%= auction.description%></p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Starting Bid: <%= auction.starting_bid %></li>
-    <li class="list-group-item">Buy Now Price: <%= auction.buy_now_price %></li>
+    <li class="list-group-item">Starting Bid: $<%= auction.starting_bid %></li>
+    <li class="list-group-item">Current Bid: $FIXME</li>
+    <li class="list-group-item">Buy Now Price: $<%= auction.buy_now_price %></li>
     <li class="list-group-item">Expire Date: <%= auction.expire_date %></li>
   </ul>
-  <div class="card-body">
-    
-    <%= link_to 'Edit    ', edit_auction_path(auction) %>
-    <%= link_to 'Delete   ', auction_path(auction), method: :delete %>
-    <p><%= link_to "Received Reviews ", user_reviews_path %></p>
-  </div>
   <div class="card-footer text-muted">
     <p>Auction status:</p>
 <% if auction.status == true %>

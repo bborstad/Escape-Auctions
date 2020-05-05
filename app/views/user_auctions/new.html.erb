@@ -1,7 +1,7 @@
 <%= render "layouts/navbar" %>
 
 <div class="jumbotron">
-  <h1 class="display-3">New Auction</h1>
+  <h4 class="display-4">Create a new auction</h4>
   <%= form_with model: auction, url: user_auctions_path, method: :post, local: true, scope: :auction do |f| %>
 
     <div>
@@ -14,12 +14,10 @@
         <%= f.text_field :description %>
     </div>
 
-
     <div>
         <%= f.label :starting_bid %><br>
         <%= f.text_field :starting_bid %>
     </div>
-
 
     <div>
         <%= f.label :buy_now_price %><br>
