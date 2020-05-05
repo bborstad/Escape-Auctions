@@ -1,5 +1,6 @@
 class UserReviewsController < ApplicationController
     before_action :authenticate_user!
+    
     def index
         auctions = current_user.auctions
         respond_to do |format|

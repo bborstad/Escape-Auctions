@@ -5,16 +5,20 @@
 
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
+      <li class="navbar-brand">Escape Auctions</li>
       <li class="navbar-brand">
         <%= link_to 'Home', root_path, class: 'nav_link' %>
       </li>
       <li class="navbar-brand">
         <%= link_to 'All Auctions', auctions_path, class: 'nav_link' %>
       </li>
-      <li class="navbar-brand">
-        <%= link_to 'User Auctions', user_auctions_path, class: 'nav_link' %>
-      </li>
       <% if user_signed_in? %>
+        <li class="navbar-brand">
+          <%= link_to 'My Auctions', user_auctions_path, class: 'nav_link' %>
+        </li>
+        <li class="navbar-brand">
+          <%= link_to 'My Bids', user_bids_path, class: 'nav_link' %>
+        </li>
         <li class="nav-item">
           <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
         </li>

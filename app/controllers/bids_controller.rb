@@ -4,10 +4,10 @@ class BidsController < ApplicationController
     respond_to do |format|
       format.html do
         if bid.save
-          flash[:success] = "bid created successfully"
+          flash[:success] = "Success: Bid placed."
           render :new, locals: { auction: auction }
         else
-          flash.now[:error] = "Error: Auction could not be created"
+          flash.now[:error] = "Error: Bid could not be placed."
           render :new, locals: { auction: auction }
         end
       end

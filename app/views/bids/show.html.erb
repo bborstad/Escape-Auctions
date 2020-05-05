@@ -1,5 +1,12 @@
 <%= render "layouts/navbar" %>
 
+<div class="jumbotron">
+  <h1 class="display-3">My Bids</h1>
+  <p class="lead">You can see what auctions you've bid on here.</p>
+  
+</div>
+
+
 <% auctions.each do |auction| %>
 
   <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
@@ -8,13 +15,14 @@
     </div>
     <%= image_tag(auction.image, style:'height: 200px; width: 100%; display: block;') %>
     <div class="card-body">
-      <h4 class="card-title"> End Date:
+      <p class="card-title"> End Date:
         <%= auction.expire_date %>
-      </h4>
-      <li><%= link_to 'Show', auction_path(auction) %>
-      <li><%= link_to 'Edit', edit_auction_path(auction) %>
-      <li><%= link_to 'Delete', auction_path(auction), method: :delete %>
-      <li><%= link_to "Received Reviews ", user_reviews_path %></li>
+      </p>
+    </div>
+    <div class="card-body">
+      <p class="card-title"> My Bid:
+        <%= auction.bids %> #FIXME: I need to display the bid quantity
+      </p>
     </div>
   </div>
 <% end %>

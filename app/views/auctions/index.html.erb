@@ -1,8 +1,8 @@
 <%= render "layouts/navbar" %>
 
 <div class="jumbotron">
-  <h1 class="display-3">Auctions!</h1>
-  <p class="lead">Best deals, Best buys, Auction Escape!</p>
+  <h1 class="display-3">All Auctions</h1>
+  <p class="lead">Best deals, best buys, Escape Auctions!</p>
   
 </div>
 
@@ -22,12 +22,13 @@
     <p class="card-text"><%= auction.description%></p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Starting Bid: <%= auction.starting_bid %></li>
-    <li class="list-group-item">Buy Now Price: <%= auction.buy_now_price %></li>
+    <li class="list-group-item">Starting Bid: $<%= auction.starting_bid %></li>
+    <li class="list-group-item">Current Bid: $FIXME</li>
+    <li class="list-group-item">Buy Now Price: $<%= auction.buy_now_price %></li>
     <li class="list-group-item">Expire Date: <%= auction.expire_date %></li>
   </ul>
   <div class="card-body">
-     <%= link_to "Show", details_path(auction)%> 
+     <%= link_to "Details", details_path(auction)%> 
   </div>
   <div class="card-footer text-muted">
     2 days ago
