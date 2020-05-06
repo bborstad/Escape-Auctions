@@ -26,7 +26,6 @@ one:
   description: A car that is for sale.
   starting_bid: 1.55
   buy_now_price: 1500
-  status: true
   expire_date: 2020-04-20
 
 two:
@@ -34,5 +33,4 @@ two:
   description: Another car for sale
   starting_bid: 200
   buy_now_price: 1755
-  status: false
   expire_date: 2020-04-20

@@ -56,6 +56,14 @@ class AuctionTest < ActiveSupport::TestCase
     assert_not a.valid?
   end
 
+  test "expire_date cannot be before today" do
+    a = auctions(:one)
+    a.expire_date = nil
+    assert_not a.valid?
+    a.expire_date = "2020-01-01"
+    assert_not a.valid?
+  end
+
   #Numericality tests
   test "starting_bid value greater than or equal to 0" do
     a = auctions(:two)

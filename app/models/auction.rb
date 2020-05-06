@@ -59,6 +59,11 @@ class Auction < ApplicationRecord
             return false
         end
     end
+
+    def expiration_date_cannot_be_in_the_past
+        errors.add(:expire_date, "can't be in the past") if
+          !expire_date.blank? and expire_date < Date.today
+    end
     
     #Validations
     validates :title, presence: true
@@ -73,6 +78,8 @@ class Auction < ApplicationRecord
     
     #Format: year-month-date
     validates :expire_date, presence: true 
+
+    validate :expiration_date_cannot_be_in_the_past
       
 
 end

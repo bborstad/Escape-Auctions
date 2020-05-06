@@ -8,7 +8,9 @@
     <h5 class="card-title"><%= auction.title%></h5>
     <h6 class="card-subtitle text-muted"> Created by: <%= auction.user.username %></h6>
   </div>
+
   <%= image_tag(auction.image, style:'height: 200px; width: 100%; display: block;') %>
+
   <div class="card-body">
     <p class="card-text"><%= auction.description%></p>
   </div>
@@ -36,12 +38,12 @@
       <li class="list-group-item">Auction Status: expired</li>
   <% end %>
 
+  <p><%= link_to 'Add Review', new_review_path %></p>
 
-<p><%= link_to 'Add Review', new_review_path %></p>
-
-<p>Tags:</p>
-<p>
-  <% auction.tag_list.each do |tag| %>
-    <%= tag %>,
-  <% end %>
-</p>
+  <p>Tags:</p>
+  <p>
+    <% auction.tag_list.each do |tag| %>
+     <%= tag %>,
+    <% end %>
+  </p>
+</div>
