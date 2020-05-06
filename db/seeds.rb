@@ -40,7 +40,7 @@ auction2 = Auction.create!(
     starting_bid: '600.00',
     buy_now_price: '2599.99',
     expire_date: '2019-05-22',
-    status: 'true',
+    #status: 'true',
     :seed_flag => true
 )
 
@@ -51,7 +51,7 @@ auction3 = Auction.create!(
     starting_bid: '200.00',
     buy_now_price: '1900.00',
     expire_date: '2020-09-25',
-    status: 'true',
+    #status: 'true',
     :seed_flag => true
 )
 
