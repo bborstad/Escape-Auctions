@@ -28,7 +28,7 @@ auction1 = Auction.create!(
     starting_bid: '200.00',
     buy_now_price: '2000.00',
     expire_date: '2021-10-31',
-    status: 'true',
+    #status: 'true',
     :seed_flag => true
 )
 

@@ -32,7 +32,6 @@ class UserAuctionsController < ApplicationController
       end
     end
 
-
     def show
         auction = Auction.find(params[:id])
         respond_to do |format|

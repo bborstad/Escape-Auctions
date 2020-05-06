@@ -48,6 +48,13 @@ class Auction < ApplicationRecord
         end
     end
 
+    #Scopes
+    #Expired auctions
+    scope :expired_auctions, -> { where('expire_date < ?', Time.current.beginning_of_day) }
+    #Active auctions
+    scope :active_auctions, -> { where('expire_date > ?', Time.current.beginning_of_day) }
+    
+    #Validations
     validates :title, presence: true
 
     validates :starting_bid,
