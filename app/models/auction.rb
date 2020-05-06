@@ -49,8 +49,16 @@ class Auction < ApplicationRecord
     end
 
     validates :title, presence: true
-    validates :starting_bid, presence: true
-    validates :buy_now_price, presence: true
+
+    validates :starting_bid,
+        presence: true,
+        numericality: { greater_than_or_equal_to: 0 }
+
+    validates :buy_now_price,
+        presence: true,
+        numericality: { greater_than: 0 }
+
+    #validates :expire_date, presence: true
 
 
 end

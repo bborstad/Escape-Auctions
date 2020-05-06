@@ -25,11 +25,11 @@
 #
 
 one:
-  name: MyString
-  email: MyString
-  message: MyString
+  name: John Smith
+  email: johnsmithreviewfixture@email.com
+  message: Wonderful interaction with the seller.
 
 two:
-  name: MyString
-  email: MyString
-  message: MyString
+  name: Jane Smith
+  email: janesmithreviewfixture@email.com
+  message: Very quick to communicate.

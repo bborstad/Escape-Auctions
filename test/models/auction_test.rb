@@ -24,7 +24,54 @@
 require 'test_helper'
 
 class AuctionTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  #Presence tests
+  test "title presence not valid" do
+    a = auctions(:one)
+    a.title = nil
+    assert_not a.valid?
+    a.title = ""
+    assert_not a.valid?
+  end
+  
+  test "starting_bid presence not valid" do
+    a = auctions(:one)
+    a.starting_bid = nil
+    assert_not a.valid?
+    a.starting_bid = ""
+    assert_not a.valid?
+  end
+  
+  test "buy_now_price presence not valid" do
+    a = auctions(:one)
+    a.buy_now_price = nil
+    assert_not a.valid?
+    a.buy_now_price = ""
+    assert_not a.valid?
+  end
+  
+  test "expire_date presence not valid" do
+    a = auctions(:one)
+    a.expire_date = nil
+    assert_not a.valid?
+    a.expire_date = ""
+    assert_not a.valid?
+  end
+
+  #Numericality tests
+  test "starting_bid value greater than or equal to 0" do
+    a = auctions(:two)
+    a.starting_bid = -1
+    assert_not a.valid?
+    a.starting_bid = 1
+    assert_not a.valid?
+  end
+
+  test "buy_now_price value greater than 0" do
+    a = auctions(:two)
+    a.buy_now_price = -1
+    assert_not a.valid?
+    a.buy_now_price = 0
+    assert_not a.valid?
+  end
+
 end

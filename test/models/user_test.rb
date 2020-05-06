@@ -21,7 +21,51 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  #Presence tests
+  test "email presence not valid" do
+    u = users(:one)
+    u.email = nil
+    assert_not u.valid?
+    u.email = ""
+    assert_not u.valid?
+  end
+  
+  test "username presence not valid" do
+    u = users(:one)
+    u.username = nil
+    assert_not u.valid?
+    u.username = ""
+    assert_not u.valid?
+  end
+  
+  test "password presence not valid" do
+    u = users(:one)
+    u.password= nil
+    assert_not u.valid?
+    u.password = ""
+    assert_not u.valid?
+  end
+
+  #Uniqueness tests
+  test "email uniqueness not valid" do
+    one = users(:one)
+    two = users(:two)
+    one.email = two.email
+    assert_not one.valid?
+  end
+
+  test "username uniqueness not valid" do
+    one = users(:one)
+    two = users(:two)
+    one.username = two.username
+    assert_not one.valid?
+  end
+
+  test "password uniqueness not valid" do
+    one = users(:one)
+    two = users(:two)
+    one.password = two.password
+    assert_not one.valid?
+  end
+  
 end

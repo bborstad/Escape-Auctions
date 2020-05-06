@@ -32,4 +32,8 @@ class Bid < ApplicationRecord
       foreign_key: 'auction_id',
       inverse_of: :bids
   )
+
+  validates :amount, 
+    presence: true,
+    numericality: { greater_than: 0 }
 end

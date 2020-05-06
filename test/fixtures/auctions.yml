@@ -23,19 +23,17 @@
 #
 
 one:
-  title: MyString
-  description: MyText
-  starting_bid: 1.5
-  buy_now_price: 1.5
-  status: false
-  winning_bid: 1.5
+  title: Sample Car
+  description: A car that is for sale.
+  starting_bid: 1.55
+  buy_now_price: 1500
+  status: true
   expire_date: 2020-04-20
 
 two:
-  title: MyString
-  description: MyText
-  starting_bid: 1.5
-  buy_now_price: 1.5
+  title: Sample Car 2
+  description: Another car for sale
+  starting_bid: 200
+  buy_now_price: 1755
   status: false
-  winning_bid: 1.5
   expire_date: 2020-04-20

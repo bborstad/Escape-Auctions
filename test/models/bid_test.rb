@@ -22,7 +22,20 @@
 require 'test_helper'
 
 class BidTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  #Presence tests
+  test "bid presence not valid" do
+    b = bids(:one)
+    b.amount = nil
+    assert_not b.valid?
+  end
+
+  #Numericality tests
+  test "bid value greater than 0" do
+    b = bids(:two)
+    b.amount = -1
+    assert_not b.valid?
+    b.amount = 0
+    assert_not b.valid?
+  end
+  
 end
