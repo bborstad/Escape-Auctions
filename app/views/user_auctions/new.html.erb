@@ -3,7 +3,7 @@
 <div class="jumbotron">
   <h4 class="display-4">Create a new auction</h4>
   <%= form_with model: auction, url: user_auctions_path, method: :post, local: true, scope: :auction do |f| %>
-
+    
     <div>
         <%= f.label :title %><br>
         <%= f.text_field :title %>
@@ -25,19 +25,21 @@
     </div>
 
     <div>
-        <%= f.label :expire_date %><br>
-        <%= f.text_field :expire_date %>
+      <%= f.label :expire_date%><br>
+      <%= f.text_field :expire_date, :placeholder=>'yyyymmdd' %>
     </div>
 
     <div class="field">
-      <%= f.label :image %>
+      <%= f.label :image %><br>
       <%= f.file_field :image%>
     </div>
 
     <div>
-      <%= f.label :tag_list %>
+      <%= f.label :tag_list %><br>
       <%= f.text_field :tag_list %>
     </div>
+    
+    <br>
 
     <%= f.submit 'Create Auction' %>
     

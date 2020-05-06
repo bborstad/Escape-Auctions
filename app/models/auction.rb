@@ -57,8 +57,9 @@ class Auction < ApplicationRecord
     validates :buy_now_price,
         presence: true,
         numericality: { greater_than: 0 }
-
-    #validates :expire_date, presence: true
-
+    
+    #Format: year-month-date
+    validates :expire_date, presence: true 
+      
 
 end

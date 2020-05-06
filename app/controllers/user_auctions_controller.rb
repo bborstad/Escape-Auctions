@@ -25,7 +25,7 @@ class UserAuctionsController < ApplicationController
             flash[:success] = "Auction created successfully"
             redirect_to user_auctions_url
           else
-            flash.now[:error] = "Error: Auction could not be created"
+            flash.now[:error] = "Error: Auction could not be created."
             render :new, locals: { auction: auction }
           end
         end

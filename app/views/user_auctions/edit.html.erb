@@ -31,13 +31,16 @@
   </div>
 
   <div class="field">
-    <%= f.label :image %>
+    <%= f.label :image %><br>
     <%= f.file_field :image%>
   </div>
 
   <div>
+    <%= f.label :tag_list %><br>
     <%= f.text_field :tag_list %>
   </div>
+
+  <br>
 
   <%= f.submit 'Update Auction' %>
 
