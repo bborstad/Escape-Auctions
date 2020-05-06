@@ -7,7 +7,7 @@ class AuctionsController < ApplicationController
     end
 
     def show
-        auction = Auction.active_auctions.find(params[:id])
+        auction = Auction.find(params[:id])
         respond_to do |format|
             format.html { render :show, locals: { auction: auction } }
         end

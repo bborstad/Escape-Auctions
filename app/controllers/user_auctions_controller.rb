@@ -41,14 +41,14 @@ class UserAuctionsController < ApplicationController
 
 
     def edit
-        auction = Auction.find(params[:id])
+        auction = Auction.active_auctions.find(params[:id])
         respond_to do |format|
           format.html { render :edit, locals: { auction: auction } }
         end
     end
       
     def update
-        auction = Auction.find(params[:id])
+        auction = Auction.active_auctions.find(params[:id])
             respond_to do |format|
                 format.html do
                 if auction.update(params.require(:auction).permit(:title, :description, :starting_bid, :buy_now_price, :expire_date, :status, :image, :tag_list))
@@ -63,7 +63,7 @@ class UserAuctionsController < ApplicationController
     end
 
     def destroy
-        auction = Auction.find(params[:id])
+        auction = Auction.active_auctions.find(params[:id])
         auction.destroy
         respond_to do |format|
             format.html do

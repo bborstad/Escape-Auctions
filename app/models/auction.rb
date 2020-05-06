@@ -47,11 +47,18 @@ class Auction < ApplicationRecord
         end
     end
 
-    #Scopes
     #Expired auctions
     scope :expired_auctions, -> { where('expire_date < ?', Time.current.beginning_of_day) }
     #Active auctions
     scope :active_auctions, -> { where('expire_date > ?', Time.current.beginning_of_day) }
+
+    def is_expired?
+        if expire_date < Time.current.beginning_of_day
+            return true
+        else
+            return false
+        end
+    end
     
     #Validations
     validates :title, presence: true
