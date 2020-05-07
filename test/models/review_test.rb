@@ -26,7 +26,28 @@
 require 'test_helper'
 
 class ReviewTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "email presence not valid" do
+    r = reviews(:one)
+    r.email = nil
+    assert_not r.valid?
+    r.email = ""
+    assert_not r.valid?
+  end
+  
+  test "message presence not valid" do
+    r = reviews(:one)
+    r.message = nil
+    assert_not r.valid?
+    r.message = ""
+    assert_not r.valid?
+  end
+  
+  test "name presence not valid" do
+    r = reviews(:one)
+    r.name = nil
+    assert_not r.valid?
+    r.name = ""
+    assert_not r.valid?
+  end
+  
 end

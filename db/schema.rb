@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 2020_04_27_225506) do
     t.text "description"
     t.float "starting_bid"
     t.float "buy_now_price"
-    t.boolean "status", default: true
     t.date "expire_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

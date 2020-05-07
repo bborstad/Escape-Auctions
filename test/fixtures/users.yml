@@ -20,9 +20,9 @@
 #
 
 one:
-  username: MyString
-  password: MyString
+  username: johnsmithuserfixture@email.com
+  password: password
 
 two:
-  username: MyString
-  password: MyString
+  username: janesmithuserfixture@email.com
+  password: password

@@ -1,4 +1,8 @@
 class BidsController < ApplicationController
+  
+  before_action :authenticate_user!
+ # before_action :require_permission, only: [:show, :create]
+
   def create
     bid = current_user.bids.build(params.require(:bid).permit(:amount, :auction))
     respond_to do |format|
