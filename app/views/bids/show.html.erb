@@ -18,10 +18,21 @@
       <p class="card-title"> End Date:
         <%= auction.expire_date %>
       </p>
-    </div>
-    <div class="card-body">
-      <p class="card-title"> My Bid:
-        <%= auction.bids %> #FIXME: I need to display the bid quantity
+      <p></p>
+      <p> Winning Bid:</p>
+      <% winning_bid =  auction.bids.order(amount: :desc).first %>
+      <p>$<%= winning_bid.amount %></p>
+      <% if winning_bid.user_id == current_user %>
+        <p><b>You are currently the highest bidder</b></p>
+      <% else %>
+        <p><b>You are not the highest bidder</b></p>
+        <p></p>
+      <% end %>
+      <p class="card-title"> My Bids:
+        <% bids =  auction.bids.where(user_id: current_user) %>
+        <% bids.each do |bid| %>
+        <p>$<%= bid.amount %> on <%= bid.created_at %></p>
+        <% end %>
       </p>
     </div>
   </div>
