@@ -1,7 +1,35 @@
 <%= render "layouts/navbar" %>
 
-<h3>Search Result</h3>
+  <% if @results.present? %>
+    <h3 class="pt-3"> Search Results:</h3>
+    <% @results.each do |result| %>
+        <div class="card mb-3" style="width: 18rem;">
+          <h3 class="card-header"></h3>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to result.title, "auctions/#{result.id}" %></h5>
+            <h6 class="card-subtitle text-muted"> Created by: <%= result.user.username %></h6>
+          </div>
+          <%= image_tag(result.image, style:'height: 200px; width: 100%; display: block;') %>
+          <div class="card-body">
+            <p class="card-text"><%= result.description%></p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <% winning_bid =  result.bids.order(amount: :desc).first %>
+            <li class="list-group-item">Starting Bid: $<%= result.starting_bid %></li>
+            <li class="list-group-item">Current Bid: $<%= winning_bid.amount %></li>
+            <li class="list-group-item">Buy Now Price: $<%= result.buy_now_price %></li>
+            <li class="list-group-item">Expire Date: <%= result.expire_date %></li>
+          </ul>
+          <div class="card-body">
+            <%= link_to "Details", details_path(result)%>
+          </div>
+          <div class="card-footer text-muted">
+            2 days ago
+          </div>
+      </div>
+    <% end %>
+  <% else %>
+    <h3 class='pt-3'>Sorry, we could not find what you were looking for.</h3>
+  <% end %>
 
-<% @results.each do |result| %>
-  <%= link_to result.title, "auctions/#{result.id}" %>
-<% end %>
+
