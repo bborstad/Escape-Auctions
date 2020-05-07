@@ -52,6 +52,8 @@ def destroy
   end
 end
 
+
+
 def require_permission
   if Review.find(params[:id]).user != current_user
     redirect_to reviews_path, flash: { error: "You do not have permission to do that."}

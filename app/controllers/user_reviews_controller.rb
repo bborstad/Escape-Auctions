@@ -7,6 +7,7 @@ class UserReviewsController < ApplicationController
             format.html { render :index, locals: {auctions: auctions } }
         end
     end
+
     
     def submission
         required = [:name, :email, :reply, :message]
