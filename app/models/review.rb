@@ -39,6 +39,8 @@ class Review < ApplicationRecord
         inverse_of: :reviews
     )
 
-
+    validates :email, presence: true
+    validates :message, presence: true
+    validates :name, presence: true
  
 end

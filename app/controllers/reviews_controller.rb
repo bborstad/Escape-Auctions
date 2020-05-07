@@ -17,12 +17,12 @@ class ReviewsController < ApplicationController
     end 
   end 
 
-    def show
-      review = Review.find(params[:id])
-      respond_to do |format|
-        format.html {render :show, locals: {review:review}}
-      end
+  def show
+    review = Review.find(params[:id])
+    respond_to do |format|
+      format.html {render :show, locals: {review:review}}
     end
+  end
 
   def create
     review = current_user.reviews.build(params.require(:review).permit(:name, :email, :message,))

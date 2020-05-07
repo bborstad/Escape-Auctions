@@ -7,7 +7,6 @@
 #  description   :text
 #  expire_date   :date
 #  starting_bid  :float
-#  status        :boolean          default(TRUE)
 #  title         :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
@@ -48,9 +47,39 @@ class Auction < ApplicationRecord
         end
     end
 
-    validates :title, presence: true
-    validates :starting_bid, presence: true
-    validates :buy_now_price, presence: true
+    #Expired auctions
+    scope :expired_auctions, -> { where('expire_date < ?', Time.current.beginning_of_day) }
+    #Active auctions
+    scope :active_auctions, -> { where('expire_date > ?', Time.current.beginning_of_day) }
 
+    def is_expired?
+        if expire_date < Time.current.beginning_of_day
+            return true
+        else
+            return false
+        end
+    end
+
+    def expiration_date_cannot_be_in_the_past
+        errors.add(:expire_date, "can't be in the past") if
+          !expire_date.blank? and expire_date < Date.today
+    end
+    
+    #Validations
+    validates :title, presence: true
+
+    validates :starting_bid,
+        presence: true,
+        numericality: { greater_than_or_equal_to: 0 }
+
+    validates :buy_now_price,
+        presence: true,
+        numericality: { greater_than: 0 }
+    
+    #Format: year-month-date
+    validates :expire_date, presence: true 
+
+    validate :expiration_date_cannot_be_in_the_past
+      
 
 end

@@ -28,7 +28,6 @@ auction1 = Auction.create!(
     starting_bid: '200.00',
     buy_now_price: '2000.00',
     expire_date: '2021-10-31',
-    status: 'true',
     :seed_flag => true
 )
 
@@ -39,8 +38,7 @@ auction2 = Auction.create!(
     description: 'Rebuilt engine',
     starting_bid: '600.00',
     buy_now_price: '2599.99',
-    expire_date: '2021-10-31',
-    status: 'true',
+    expire_date: '2020-05-22',
     :seed_flag => true
 )
 
@@ -50,8 +48,7 @@ auction3 = Auction.create!(
     description: 'Lots of hail damage',
     starting_bid: '200.00',
     buy_now_price: '1900.00',
-    expire_date: '2021-10-31',
-    status: 'true',
+    expire_date: '2020-09-25',
     :seed_flag => true
 )
 

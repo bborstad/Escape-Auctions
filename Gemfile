@@ -64,3 +64,6 @@ gem 'devise'
 
 #Tagging for lazy people :3
 gem 'acts-as-taggable-on', '~> 6.0'
+
+#Cron scheduler
+gem 'whenever'
