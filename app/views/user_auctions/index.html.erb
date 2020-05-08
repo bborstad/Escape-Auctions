@@ -14,9 +14,14 @@
   <%= auction.title %>
   </div>
   <%= image_tag(auction.image, style:'height: 200px; width: 100%; display: block;') %>
+  <% winning_bid =  auction.bids.order(amount: :desc).first %>
   <% if auction.is_expired? == false %>
     <div class="card-body">
-      <p>Current Bid: $FIXME</p>
+      <% if winning_bid.present? %>
+        <p> Current Bid: $<%= winning_bid.amount %> </p>
+      <% else %>
+        <p> Current Bid: $<%= auction.starting_bid %> </p>
+      <% end %>
       <p> End Date: <%= auction.expire_date %></p>
       <li><%= link_to 'Details', auction_path(auction) %>
       <li><%= link_to 'Edit', edit_auction_path(auction) %>
@@ -25,7 +30,11 @@
     </div>
   <% else %>
     <div class="card-body">
-      <p>Winning Bid: $FIXME</p>
+      <% if winning_bid.present? %>
+        <p> Winning Bid: $<%= winning_bid.amount %> </p>
+      <% else %>
+        <p> Winning Bid: $<%= auction.starting_bid %> </p>
+      <% end %>
       <p>Expiration Date: <%= auction.expire_date %></p>
       <li><%= link_to 'Details', auction_path(auction) %>
       <li>Edit</li>

@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   get '/search' => 'search#search', :as => 'search_page'
 
-  post 'auctions/:id/bid' => 'bid#create'
+  post 'auctions/:id/bid' => 'bids#create'
   get 'user/bids/' => 'bids#show', :as => 'user_bids'
 
   #Routes for User Review Controller 
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   get 'user/review/submission', to: 'user_reviews#submission', as: 'submission'
   post 'user/review/submission', to: 'user_reviews#update', as: 'update'
 
-  get 'purchased', to: 'user_auctions#purchase', as: 'purchase'
+  get 'purchased/:id', to: 'user_auctions#purchase', as: 'purchase'
  
   
  

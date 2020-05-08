@@ -22,8 +22,13 @@
     <p class="card-text"><%= auction.description%></p>
   </div>
   <ul class="list-group list-group-flush">
+    <% winning_bid =  auction.bids.order(amount: :desc).first %>
     <li class="list-group-item">Starting Bid: $<%= auction.starting_bid %></li>
-    <li class="list-group-item">Current Bid: $FIXME</li>
+    <% if winning_bid.present? %>
+      <li class="list-group-item">Current Bid: $<%= winning_bid.amount %></li>
+    <% else %>
+      <li class="list-group-item">Current Bid: $<%= auction.starting_bid %></li>
+    <% end %>
     <li class="list-group-item">Buy Now Price: $<%= auction.buy_now_price %></li>
     <li class="list-group-item">Expire Date: <%= auction.expire_date %></li>
   </ul>
