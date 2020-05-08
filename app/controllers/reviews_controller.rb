@@ -25,8 +25,8 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    review = current_user.auctions.reviews.build(params.require(:review).permit(:name, :email, :message,))
-    
+    review = current_user.reviews.build(params.require(:review).permit(:name, :email, :message,))
+   
     respond_to do |format|
       format.html do
     if review.save
