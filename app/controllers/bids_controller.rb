@@ -4,15 +4,37 @@ class BidsController < ApplicationController
  # before_action :require_permission, only: [:show, :create]
 
   def create
-    bid = current_user.bids.build(params.require(:bid).permit(:amount, :auction))
+    # bid = current_user.bids.build(params.require(:bid).permit(:amount))
+
+
+    auction = Auction.find(params[:id])
+    amount = params[:amount]
+    highest = auction.bids.order(amount: :desc).first
+    if highest.present?
+      highest_bid = highest.amount
+    else
+      highest_bid = auction.starting_bid
+    end
+    if amount.to_f <= highest_bid
+      flag = 1
+    else
+      bid = Bid.new(
+          user_id: current_user.id,
+          amount: amount,
+          auction_id: params[:id],
+      )
+    end
     respond_to do |format|
       format.html do
-        if bid.save
+        if flag == 1
+          flash[:error] =  "Error: Bid can not be lower than previous bids."
+              redirect_to "/auctions/#{auction.id}"
+        elsif bid.save
           flash[:success] = "Success: Bid placed."
-          render :new, locals: { auction: auction }
+          redirect_to "/auctions/#{auction.id}"
         else
-          flash.now[:error] = "Error: Bid could not be placed."
-          render :new, locals: { auction: auction }
+          flash[:error] =  "Error: Bid could not be placed."
+          redirect_to "/auctions/#{auction.id}"
         end
       end
     end

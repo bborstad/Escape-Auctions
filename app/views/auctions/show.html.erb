@@ -16,34 +16,34 @@
   </div>
 
   <% winning_bid =  auction.bids.order(amount: :desc).first %>
+  <% if winning_bid.present? %>
+    <% winning_bid_amount = winning_bid.amount %>
+  <% else %>
+    <% winning_bid_amount = auction.starting_bid %>
+  <% end %>
   <% if auction.is_expired? == false %>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Expire Date: <%= auction.expire_date %></li>
       <li class="list-group-item">Starting Bid: $<%= auction.starting_bid %></li>
-      <% if winning_bid.present? %>
-        <li class="list-group-item">Current Bid: $<%= winning_bid.amount %></li>
-      <% else %>
-        <li class="list-group-item">Current Bid: $<%= auction.starting_bid %></li>
-      <% end %>
+
+      <li class="list-group-item">Current Bid: $<%= winning_bid_amount %></li>
+
       <li class="list-group-item">Buy Now Price: $<%= auction.buy_now_price %></li>
-      <a class="btn btn-primary" href='/purchased'>Buy Now</a>
+      <a class="btn btn-primary" href="/purchased/<%= auction.id %>">Buy Now</a>
       <li class="list-group-item">Auction Status: active</li>
     </ul>
       <div class="card-body">
-        <%= form_with model: Bid, url: 'auctions/:id/bid', method: :post, scope: :bid do |f| %>
-          <%= f.text_field :amount %>
-          <% f.text_field :auction => auction %>
+        <%= form_with url: "/auctions/#{auction.id}/bid", method: :post do |f| %>
+          <%= f.number_field :amount, :value => (winning_bid_amount + 1)%>
           <%= f.submit "Place bid" %>
         <% end %>  
       </div>
   <% else %>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Expire Date: <%= auction.expire_date %></li>
-      <% if winning_bid.present? %>
-        <li class="list-group-item">Current Bid: $<%= winning_bid.amount %></li>
-      <% else %>
-        <li class="list-group-item">Current Bid: $<%= auction.starting_bid %></li>
-      <% end %>
+
+      <li class="list-group-item">Current Bid: $<%= winning_bid_amount %></li>
+
       <li class="list-group-item">Auction Status: inactive</li>
   <% end %>
 
