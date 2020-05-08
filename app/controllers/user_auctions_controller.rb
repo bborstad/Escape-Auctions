@@ -84,7 +84,7 @@ class UserAuctionsController < ApplicationController
     auction.expire_date = Date.today
     auction.save
     respond_to do |format|
-      format.html { render :'pages/purchased', locals: { } }
+      format.html { render :'pages/purchased', locals: {auction:auction } }
     end
   end
 end

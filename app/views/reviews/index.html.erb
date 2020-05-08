@@ -2,16 +2,19 @@
 
 <div class="jumbotron">
   <h1 class="display-3">All Reviews</h1>
-  <p class="lead"> Shows all submitted Reviews </p>
+  <p class="lead"> Reviews that you submitted </p>
   <hr class="my-4">
 
   <% reviews.each do |review|%>
+  
   <div id= "<%= dom_id(review) %>">
 
 <div class="card mb-3" style="width: 18rem;">
   
-  <h3 class="card-header"> Sent Review</h3>
+  <h3 class="card-header"> Received Review</h3>
   <% review_auction = Auction.find(review.auction_id) %>
+  <p> </p>
+   <p class="card-text">Review Title</p>
   <p class="card-text"><%= review_auction.title%></p>
   
   <div class="card-body">

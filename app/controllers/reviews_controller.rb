@@ -10,6 +10,13 @@ class ReviewsController < ApplicationController
     end
   end 
 
+  def reviewleft
+    reviews = Review.where(auction_id: params[:id])
+    respond_to do |format|
+      format.html {render :reviewleft, locals: {reviews:reviews}}
+    end
+  end
+
   def new 
     review = Review.new
     id=params[:id]
