@@ -12,8 +12,9 @@ class ReviewsController < ApplicationController
 
   def new 
     review = Review.new
+    id=params[:id]
     respond_to do |format| 
-      format.html {render :new, locals: {review: review}}
+      format.html {render :new, locals: {review: review,id: id}}
     end 
   end 
 
@@ -25,11 +26,18 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    review = current_user.reviews.build(params.require(:review).permit(:name, :email, :message,))
+    
+    review = Review.new(
+      name: params[:name],
+      email: params[:email],
+      message: params[:message],
+      auction_id: params[:id],
+      user_id: current_user.id
+    )
     
     respond_to do |format|
       format.html do
-    if review.save
+    if review.save!
       flash[:success] = "Review saved successfully"
       redirect_to reviews_url
     else
@@ -51,6 +59,8 @@ def destroy
       end
   end
 end
+
+
 
 def require_permission
   if Review.find(params[:id]).user != current_user

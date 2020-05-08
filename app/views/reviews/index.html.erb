@@ -10,7 +10,9 @@
 
 <div class="card mb-3" style="width: 18rem;">
   
-  <h3 class="card-header"> Review Left by</h3>
+  <h3 class="card-header"> Sent Review</h3>
+  <% review_auction = Auction.find(review.auction_id) %>
+  <p class="card-text"><%= review_auction.title%></p>
   
   <div class="card-body">
     <h5 class="card-title"><%= review.name%></h5>
@@ -26,4 +28,4 @@
 
 <% end %>
 
- <%= link_to 'Add Review', new_review_path %>
+

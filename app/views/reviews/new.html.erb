@@ -7,7 +7,7 @@
 
 
 
-<%= form_with model: review, url: reviews_path, method: :post, local: true, scope: :review do |form| %>
+<%= form_with url: "/auctions/#{params[:id]}/reviews/", method: :post do |form| %>
 
  <div>
    <%= form.label :name %><br>

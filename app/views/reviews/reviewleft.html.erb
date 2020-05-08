@@ -1,0 +1,18 @@
+<% reviews.each do |review|%>
+<div id= "<%= dom_id(review) %>">
+
+<div class="card mb-3" style="width: 18rem;">
+  
+  <h3 class="card-header"> Review Left by</h3>
+  
+  <div class="card-body">
+    <h5 class="card-title"><%= review.name%></h5>
+    <h6 class="card-subtitle text-muted"> Email: <%= review.email %></h6>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><%= review.message%></p>
+  </div>
+  
+</div>
+
+<% end %>
