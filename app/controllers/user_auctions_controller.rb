@@ -80,6 +80,9 @@ class UserAuctionsController < ApplicationController
     end
 
   def purchase
+    auction = Auction.find(params[:id])
+    auction.expire_date = Date.today
+    auction.save
     respond_to do |format|
       format.html { render :'pages/purchased', locals: { } }
     end

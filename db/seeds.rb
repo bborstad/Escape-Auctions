@@ -99,12 +99,12 @@ bid1 = Bid.create!(
 
 bid2 = Bid.create!(
     user: user1,
-    amount: 210.21,
+    amount: 610.21,
     auction: auction2
 )
 bid3 = Bid.create!(
     user: user4,
-    amount: 220.50,
+    amount: 620.50,
     auction: auction2
 )
 

@@ -21,7 +21,11 @@
       <p></p>
       <p> Winning Bid:</p>
       <% winning_bid =  auction.bids.order(amount: :desc).first %>
-      <p>$<%= winning_bid.amount %></p>
+      <% if winning_bid.present? %>
+        <p> $<%= winning_bid.amount %> </p>
+      <% else %>
+        <p> $<%= auction.starting_bid %> </p>
+      <% end %>
       <% if winning_bid.user_id == current_user %>
         <p><b>You are currently the highest bidder</b></p>
       <% else %>
