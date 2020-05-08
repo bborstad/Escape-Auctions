@@ -26,7 +26,7 @@
       <% else %>
         <p> $<%= auction.starting_bid %> </p>
       <% end %>
-      <% if winning_bid.user_id == current_user %>
+      <% if winning_bid.user_id == current_user.id %>
         <p><b>You are currently the highest bidder</b></p>
       <% else %>
         <p><b>You are not the highest bidder</b></p>
