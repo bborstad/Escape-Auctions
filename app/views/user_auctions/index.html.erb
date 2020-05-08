@@ -26,7 +26,7 @@
       <li><%= link_to 'Details', auction_path(auction) %>
       <li><%= link_to 'Edit', edit_auction_path(auction) %>
       <li><%= link_to 'Delete', auction_path(auction), method: :delete %>
-      <li><%= link_to "Reviews Recieved", user_reviews_path %></li>
+      <li><%= link_to 'Received Reviews', "/auctions/#{auction.id}/reviews/reviewleft" %></li>
     </div>
   <% else %>
     <div class="card-body">
@@ -39,7 +39,6 @@
       <li><%= link_to 'Details', auction_path(auction) %>
       <li>Edit</li>
       <li>Delete</li>
-      <li><%= link_to "Reviews Recieved", user_reviews_path %></li>
     </div>
   <% end %>  
 </div>
