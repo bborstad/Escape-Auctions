@@ -11,7 +11,7 @@
 
   <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
     <div class="card-header">
-      <%= auction.title %>
+      <%= link_to auction.title, "/auctions/#{auction.id}" %>
     </div>
     <%= image_tag(auction.image, style:'height: 200px; width: 100%; display: block;') %>
     <div class="card-body">
@@ -26,7 +26,7 @@
       <% else %>
         <p> $<%= auction.starting_bid %> </p>
       <% end %>
-      <% if winning_bid.user_id == current_user %>
+      <% if winning_bid.user_id == current_user.id %>
         <p><b>You are currently the highest bidder</b></p>
       <% else %>
         <p><b>You are not the highest bidder</b></p>
